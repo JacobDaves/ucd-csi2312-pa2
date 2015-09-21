@@ -27,7 +27,7 @@ namespace Clustering {
         ~Point();
 
         // Mutator methods
-        void setValue(int, double);
+        void setArr(int, double);
 
         void setDim(int nDim);
 
@@ -47,9 +47,9 @@ namespace Clustering {
 
         Point operator/(double);
 
-        double &operator[](int index) { return arr[index - 1]; }
+       // double &operator[](int index) { return arr[index - 1]; }
 
-        // Friends
+        // Friend memeber functions
         friend Point &operator+=(Point &, const Point &);
 
         friend Point &operator-=(Point &, const Point &);

@@ -47,7 +47,7 @@
             dim = nDim;
         }
 
-        void Point::setValue(int userIndex, double userValues){
+        void Point::setArr(int userIndex, double userValues){
 
             arr[userIndex] = userValues;
         }
@@ -96,18 +96,18 @@
         Point &operator+=(Point &lhs, const Point &rhs) {
             if (&lfs == &rhs) {
                 return lhs *= 2;
-            } else if (lhs.dim == rhs.dim) {
+            } else if (lhs.dim != rhs.dim) {
                 for (int i = 0; i < lhs.dim; i++)
-                    lhs.arr[i] += rhs.arr[i];
+                    lhs.arr[i] + rhs.arr[i];
             }
             return lhs;
         }
         Point &operator-=(Point &lhs, const Point &rhs) {
             if (&lfs == &rhs) {
-                return lhs *= 2;
-            } else if (lhs.dim == rhs.dim) {
+                return lhs *= 0;
+            } else if (lhs.dim != rhs.dim) {
                 for (int i = 0; i < lhs.dim; i++)
-                    lhs.arr[i] -= rhs.arr[i];
+                    lhs.arr[i] - rhs.arr[i];
             }
             return lhs;
         }
@@ -119,12 +119,12 @@
         };
 	//overload == operator
 
-    bool Point::operator==(const Point &point, const Point &otherp)
+    bool Clustering::operator==(const Point &point, const Point &otherp)
 	{
-		if (point.getDims() == otherp.getDims())
+		if (point.getDim() == otherp.getDim())
 		{
 			//for loop that checks if any elements are different an returns flase if they are
-			for (int i = 0; i < point.getDims(); i++)
+			for (int i = 0; i < point.getDim(); i++)
 			{
 				if (point.arr[i] != otherp.arr[i])
 					return false;
@@ -135,30 +135,56 @@
 			return false;
 	}
     // overloaded !=
-    bool Point::operator!=(const Point &point, const Point &otherp)
+    bool Clustering::operator!=(const Point &point, const Point &otherp)
 	{
-		return (point != otherp);
+		return !(point == otherp);
 	}
-bool Point::operator<(const Point &point, const Point &otherp)
-{
-    if (point.getDims() == point1.getDims() && point != otherp)
+    
+    // Overloaded < 
+    bool Point::operator<(const Point &point, const Point &otherp)
     {
-    for (int i = 0; i < point.getDims(); i++)
-        {
-            if (point.arr[i] < otherp.arr[i])
-                return true;
-            else if (point.arr[i] > otherp.arr[i])
-                return false;
-        }
+        
+        return (point != point1 && !(point > otherp));
     }
-    else
-        return false;
-}
+        
+    // overloaded >    
+        bool Clustering::operator>(const Point &point, const Point &otherp)
+    {
+        
+        return (point != point1 && !(point < otherp));
+    }
+
+    // Overloaded <=
+        bool Clustering::operator<=(const Point &point, const Point &otherp)
+    {
+        
+        return (point < otherp || point == otherp);
+    }
+
+    // overlaod >= I just used the formentioned functions im not sure if they work yet
+    bool Clustering::operator>=(const Point &point, const Point &otherp)
+    {
+        
+        return (point > otherp || point == otherp);
+    }
+     std::ostream &operator<<(std::ostream &os, const Point &point)
+    {
+        cout << "(";
+       
+        for (int i = 0; i < point.getDim() - 1; i++) {
+            os << point.getArr(i) << ",";
+        }
+        
+        cout << point.getArr(point.getDim() - 1) << ")\n";
+
+        return os;
+    }
+
 // Calculates the distance between the point and the one passed
 
 // computeArea...
 // Takes a 3 point reference and then finds the area
-//double computeArea(Point &A, Point &B, Point &C) {
+//double computeArea(Point &, Point &, Point &) {
 //    double side1 = A.distanceTo(B);
 //    double side2 = B.distanceTo(C);
 //    double side3 = A.distanceTo(C);
