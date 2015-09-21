@@ -126,7 +126,7 @@
 			//for loop that checks if any elements are different an returns flase if they are
 			for (int i = 0; i < point.getDims(); i++)
 			{
-				if (point.arr[i] != otherp.srr[i])
+				if (point.arr[i] != otherp.arr[i])
 					return false;
 			}
 			return true;
