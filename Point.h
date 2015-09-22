@@ -28,20 +28,20 @@ namespace Clustering {
         int getDims() const;
         //had to add this to yours
         void setDims(int nDim);
-        // Functions
+        // Functions // TODO ***Done
         double distanceTo(const Point &) const;
 
         // Overloaded operators
 
-        // Members//TODO ***Doing
+        // Members//TODO ***Done
         Point &operator*=(double);
         Point &operator/=(double);
         const Point operator*(double) const; // prevent (p1*2) = p2;
         const Point operator/(double) const;
 
-        double &operator[](int index) { return values[index - 1]; } // TODO out-of-bds?
+        //double &operator[](int index) { return values[index - 1]; } // TODO out-of-bds? ???
 
-        // Friends//TODO
+        // Friends//TODO ***doing
         friend Point &operator+=(Point &, const Point &);
         friend Point &operator-=(Point &, const Point &);
         friend const Point operator+(const Point &, const Point &);
