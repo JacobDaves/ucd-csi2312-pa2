@@ -9,6 +9,7 @@
 namespace Clustering {
 
     class Point {
+    protected:
         int dim;        // number of dimensions of the point
         double *values; // values of the point's dimensions
 
@@ -56,6 +57,7 @@ namespace Clustering {
         friend bool operator>=(const Point &, const Point &);
 
         friend std::ostream &operator<<(std::ostream &, const Point &);
+        // When would i use this?
         friend std::istream &operator>>(std::istream &, Point &);
     };
 
