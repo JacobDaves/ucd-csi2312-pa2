@@ -3,6 +3,8 @@
 //
 // A 3-dimensional point class!
 // Coordinates are double-precision floating point.
+#include <ostream>
+#include <iostream> 
 
 #ifndef __point_h
 #define __point_h
@@ -19,7 +21,7 @@ namespace Clustering {
     public:
         // Constructors
         Point();                      // default constructor
-        Point(int userDim);    // n diminsion constructor
+        Point(int);    // n diminsion constructor
         //point(int, double);
         Point(double *gArray);  //copy constructor
         Point &operator=(const Point &); //overloaded operator=

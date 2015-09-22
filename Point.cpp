@@ -4,6 +4,7 @@
 #include <cmath> // needed for sqrt() and pow()
 #include "Point.h" // needed to use Point class
 #include <iostream>
+#include <ostream>
 
         using namespace std;
 // Default constructor
