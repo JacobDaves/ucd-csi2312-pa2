@@ -1,0 +1,1 @@
+Compiler = Cygwin64 Terminal, G++
