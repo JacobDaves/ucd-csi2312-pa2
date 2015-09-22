@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "Point.h"
 #include "Cluster.h"
 
@@ -7,14 +8,14 @@ using namespace Clustering;
 //
 //	Code i got from going to class not sure how it all works yet
 //	but pretty much copied from what i saw of yours
-  
+double computeArea(Point &p1, Point &p2, Point &p3);
 
 int main() {
-    Point p;
+    Point p();
 
-    cout << computeArea(x, y, z);
+    cout << computeArea;
 
-    p.setArr(i, 20* (dims / 2-i));
+    p.setValues(i, 20* (dim / 2-i));
 
     cout << p << endl;
 
@@ -22,7 +23,7 @@ int main() {
 
     cout << p1 << endl;
 
-    p1 = dims / 3;
+    p1 = dim / 3;
 
     cout <<p-p1 << endl;
 
@@ -30,13 +31,13 @@ int main() {
 
     cout << p2 << endl;
 
-    p2/= dims * 1.5;
+    p2/= dim * 1.5;
 
     Point p3(p1-p2);
 
     cout << p3 << endl;
 
-    p3 *= dims * 1;
+    p3 *= dim * 1;
 
     return 0;
 
@@ -44,13 +45,12 @@ int main() {
 
 
 // computeArea...
- Takes a 3 point reference and then finds the area
-double computeArea(Point &, Point &, Point &) {
-   // double side1 = x.distanceTo(y);
-   // double side2 = y.distanceTo(z);
-   // double side3 = x.distanceTo(y);
-        float prim = x+y+z
-        float sum = prim/2
-        double tArea = sqrt(s(s-x)(s-y)(s-z))    //(sqrt((side1+side2+side3)*(side1+side2-side3)*(side2+side3-side1)*(side1+side3-side2))/4);//Heron's theory
+// Finds the area of the object
+double computeArea(Point &p1, Point &p2, Point &p3) {
+     double side1 = p1.distanceTo(p2);
+     double side2 = p2.distanceTo(p3);
+     double side3 = p3.distanceTo(p1);
+    double sum = ((side1 + side2 + side3)/2);
+    double tArea = (sqrt(sum - side1));  //Heron's theory
     return tArea;
 }

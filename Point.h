@@ -1,82 +1,63 @@
 //
-// Created by Jacob on 9/7/2015.
+// Created by Jacob on 9/21/2015.
 //
-// A 3-dimensional point class!
-// Coordinates are double-precision floating point.
-#include <ostream>
-#include <iostream> 
+#ifndef CLUSTERING_POINT_H
+#define CLUSTERING_POINT_H
 
-#ifndef __point_h
-#define __point_h
+#include <iostream>
 
 namespace Clustering {
 
     class Point {
-
-    private:
-        int dim;
-        double *arr;
-
+        int dim;        // number of dimensions of the point
+        double *values; // values of the point's dimensions
 
     public:
-        // Constructors
-        Point();                      // default constructor
-        Point(int);    // n diminsion constructor
-        //point(int, double);
-        Point(double *gArray);  //copy constructor
-        Point &operator=(const Point &); //overloaded operator=
-        // Destructor
+        Point(int); //TODO ***Done
+        //Not sure i need it
+        // Point(int, double *);
+
+        // Big three: cpy ctor, overloaded operator=, dtor//TODO ***Done
+        Point(const Point &);
+        Point &operator=(const Point &);
         ~Point();
 
-        // Mutator methods
-        void setArr(int, double);
+        // Accessors & mutators// TODO ***Done
+        void setValue(int, double);
+        double getValue(int) const;
+        int getDims() const;
+        //had to add this to yours
+        void setDims(int nDim);
+        // Functions
+        double distanceTo(const Point &) const;
 
-        void setDim(int nDim);
+        // Overloaded operators
 
-        // Accessor methods
-        double getArr(int);
+        // Members//TODO ***Doing
+        Point &operator*=(double);
+        Point &operator/=(double);
+        const Point operator*(double) const; // prevent (p1*2) = p2;
+        const Point operator/(double) const;
 
-        int getDim();
+        double &operator[](int index) { return values[index - 1]; } // TODO out-of-bds?
 
-        // Member functions
-        double distanceTo(Point &);
-
-        Point &operator*=(Point &);
-
-        Point &operator/=(Point &);
-
-        Point operator*(double);
-
-        Point operator/(double);
-
-       // double &operator[](int index) { return arr[index - 1]; }
-
-        // Friend memeber functions
+        // Friends//TODO
         friend Point &operator+=(Point &, const Point &);
-
         friend Point &operator-=(Point &, const Point &);
-
         friend const Point operator+(const Point &, const Point &);
-
         friend const Point operator-(const Point &, const Point &);
 
         friend bool operator==(const Point &, const Point &);
-
         friend bool operator!=(const Point &, const Point &);
 
         friend bool operator<(const Point &, const Point &);
-
         friend bool operator>(const Point &, const Point &);
-
         friend bool operator<=(const Point &, const Point &);
-
         friend bool operator>=(const Point &, const Point &);
 
         friend std::ostream &operator<<(std::ostream &, const Point &);
-
         friend std::istream &operator>>(std::istream &, Point &);
-
-
     };
+
 }
-#endif // __point_h
+#endif //CLUSTERING_POINT_H
