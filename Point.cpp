@@ -1,7 +1,9 @@
 //
-// Created by Jacob on 9/21/2015.
+// Created by Jacob on 10/13/2015.
+//
 // Restarted because my code was getting confusing like you said it
 // would be better tyo test as i go so i am.
+
 #include <cmath>
 #include "Point.h"
 
@@ -172,11 +174,12 @@ namespace Clustering {
         }
         return isGreaterEqual;
     }
-        std::ostream &operator<<(std::ostream &os, const Point &object){
-            for (int i = 0 ; i < object.dim ; i++){
-                os << object.values[i] << ' ' ;
-            }
-            return os;
+    std::ostream &operator<<(std::ostream &os, const Point &object){
+        for (int i = 0 ; i < object.dim ; i++){
+            os << object.values[i] << ' ' ;
         }
+        return os;
+    }
+
 
 };

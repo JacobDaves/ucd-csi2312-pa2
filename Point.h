@@ -1,8 +1,10 @@
 //
-// Created by Jacob on 9/21/2015.
+// Created by Jacob on 10/13/2015.
 //
-#ifndef CLUSTERING_POINT_H
-#define CLUSTERING_POINT_H
+
+
+#ifndef PA2_IP_DAVES_FINAL_REMAKE_2015_POINT_H
+#define PA2_IP_DAVES_FINAL_REMAKE_2015_POINT_H
 
 #include <iostream>
 
@@ -40,7 +42,7 @@ namespace Clustering {
         const Point operator*(double) const; // prevent (p1*2) = p2;
         const Point operator/(double) const;
 
-        //double &operator[](int index) { return values[index - 1]; } // TODO out-of-bds? ???
+        double &operator[](int index) { return values[index - 1]; } // TODO out-of-bds? ???
 
         // Friends//TODO ***doing
         friend Point &operator+=(Point &, const Point &);
@@ -62,4 +64,5 @@ namespace Clustering {
     };
 
 }
-#endif //CLUSTERING_POINT_H
+
+#endif //PA2_IP_DAVES_FINAL_REMAKE_2015_POINT_H

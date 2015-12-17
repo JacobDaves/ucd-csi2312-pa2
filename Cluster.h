@@ -1,9 +1,9 @@
 //
-// Created by Jacob on 9/20/2015.
+// Created by Jacob on 10/13/2015.
 //
 
-#ifndef CLUSTERING_CLUSTER_H
-#define CLUSTERING_CLUSTER_H
+#ifndef PA2_IP_DAVES_FINAL_REMAKE_2015_CLUSTER_H
+#define PA2_IP_DAVES_FINAL_REMAKE_2015_CLUSTER_H
 
 #include "Point.h"
 
@@ -27,26 +27,26 @@ namespace Clustering {
     public:
         Cluster() : size(0), points(nullptr) {};
 
-        // The big three: cpy ctor, overloaded operator=, dtor
+        // The big three: cpy ctor, overloaded operator=, dtor // TODO
         Cluster(const Cluster &);
         Cluster &operator=(const Cluster &);
         ~Cluster();
 
-        // Set functions: They allow calling c1.add(c2.remove(p));
+        // Set functions: They allow calling c1.add(c2.remove(p)); // TODO
         void add(const PointPtr &);
         const PointPtr &remove(const PointPtr &);
 
-        // Overloaded operators
+        // Overloaded operators // TODO ****Done
 
-        // IO
+        // IO // TODO
         friend std::ostream &operator<<(std::ostream &, const Cluster &);
         friend std::istream &operator>>(std::istream &, Cluster &);
 
         // Set-preserving operators (do not duplicate points in the space)
-        // - Friends
+        // - Friends // TODO?
         friend bool operator==(const Cluster &lhs, const Cluster &rhs);
 
-        // - Members
+        // - Members //TODO
         Cluster &operator+=(const Cluster &rhs); // union
         Cluster &operator-=(const Cluster &rhs); // (asymmetric) difference
 
@@ -54,7 +54,7 @@ namespace Clustering {
         Cluster &operator-=(const Point &rhs); // remove point
 
         // Set-destructive operators (duplicate points in the space)
-        // - Friends
+        // - Friends // TODO
         friend const Cluster operator+(const Cluster &lhs, const Cluster &rhs);
         friend const Cluster operator-(const Cluster &lhs, const Cluster &rhs);
 
@@ -64,4 +64,4 @@ namespace Clustering {
     };
 
 }
-#endif //CLUSTERING_CLUSTER_H
+#endif //PA2_IP_DAVES_FINAL_REMAKE_2015_CLUSTER_H
